@@ -6,17 +6,21 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/home" element={<Home/>}/>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />

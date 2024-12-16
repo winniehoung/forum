@@ -3,15 +3,15 @@ import { clone } from "../utils/helpers";
 import './table.css';
 import PropTypes from "prop-types";
 
-function Table({ headers, initdata }) {
+function Table({ headers, initdata, isadmin }) {
     const [data, setdata] = useState(
         // concat a record id for keyword searching
         clone(initdata).map((row, idx) => row.concat(idx)),
     );
     const [sort, setsort] = useState({ col: null, desc: false });
-    const [edit,setedit]=useState(null);
-    const [search,setsearch]=useState(false);
-    const [presearchdata,setpresearchdata]=useState(null);
+    const [edit, setedit] = useState(null);
+    const [search, setsearch] = useState(false);
+    const [presearchdata, setpresearchdata] = useState(null);
 
     // sort table by click
     const onSort = (e) => {
@@ -30,50 +30,53 @@ function Table({ headers, initdata }) {
         setsort({ col, desc });
     }
     // edit table
-    const onEdit=(e)=>{
+    const onEdit = (e) => {
         setedit({
-            row:parseInt(e.target.parentNode.dataset.row,10),
-            col:e.target.cellIndex,
+            row: parseInt(e.target.parentNode.dataset.row, 10),
+            col: e.target.cellIndex,
         });
     }
-    const onSaveEdit=(e)=>{
+    const onSaveEdit = (e) => {
         e.preventDefault();
-        const input=e.target.firstChild;
-        const dataclone=clone(data).map((row)=>{
-            if(row[row.length-1]===edit.row){
-                row[edit.col]=input.value;
+        const input = e.target.firstChild;
+        const dataclone = clone(data).map((row) => {
+            if (row[row.length - 1] === edit.row) {
+                row[edit.col] = input.value;
             }
             return row;
         });
-   
-        const presearch=clone(presearchdata);
-        presearch[edit.row][edit.col]=input.value;
-        setpresearchdata(presearch);
+        if (!search) {
+            dataclone[edit.row][edit.col] = input.value;
+        } else {
+            const presearch = clone(presearchdata);
+            presearch[edit.row][edit.col] = input.value;
+            setpresearchdata(presearch);
+        }
         setdata(dataclone);
         setedit(null);
     }
 
     // search table
-    const toggleSearch=()=>{
-        if(search){
+    const toggleSearch = () => {
+        if (search) {
             setdata(presearchdata);
             setsearch(false);
             setpresearchdata(null);
-        }else{
+        } else {
             setpresearchdata(data);
             setsearch(true);
         }
     }
-    const onSearch=(e)=>{
-        const keyword=e.target.value.toLowerCase();
-        if(!keyword){
+    const onSearch = (e) => {
+        const keyword = e.target.value.toLowerCase();
+        if (!keyword) {
             setdata(presearchdata);
             return;
         }
-        const idx=e.target.dataset.idx;
-        const searchdata=presearchdata.filter((row)=>{
-            return row.some((cell,colindex)=>{
-                if(colindex===parseInt(idx,10)){
+        const idx = e.target.dataset.idx;
+        const searchdata = presearchdata.filter((row) => {
+            return row.some((cell, colindex) => {
+                if (colindex === parseInt(idx, 10)) {
                     return cell.toString().toLowerCase().includes(keyword);
                 }
                 return false;
@@ -82,11 +85,11 @@ function Table({ headers, initdata }) {
         });
         setdata(searchdata);
     }
-    const searchboxes=!search?null:(
+    const searchboxes = !search ? null : (
         <tr onChange={onSearch}>
-            {headers.map((_,idx)=>(
+            {headers.map((_, idx) => (
                 <td key={idx}>
-                    <input type="text" data-idx={idx} placeholder={`Search ${headers[idx]}`}/>
+                    <input type="text" data-idx={idx} placeholder={`Search ${headers[idx]}`} />
                 </td>
             ))}
         </tr>
@@ -95,7 +98,7 @@ function Table({ headers, initdata }) {
         <div className="tile">
             <div class="buttons">
                 <button onClick={toggleSearch}>
-                    {search?'Hide Search':'Show Search'}
+                    {search ? 'Hide Search' : 'Show Search'}
                 </button>
             </div>
 
@@ -103,37 +106,40 @@ function Table({ headers, initdata }) {
                 <thead onClick={onSort}>
                     <tr>
                         {headers.map((header, idx) => {
-                            if(sort.col===idx) header+=sort.desc?'\u2191':'\u2193';
+                            if (sort.col === idx) header += sort.desc ? '\u2191' : '\u2193';
                             return <th key={idx}>{header}</th>
                         })
                         }
                     </tr>
                 </thead>
-                <tbody onDoubleClick={onEdit}>
+                <tbody onDoubleClick={isadmin ? onEdit : null}>
                     {searchboxes}
-                    {data.map((row)=>{
+                    {data.map((row) => {
                         // record index, not really row index
-                        const rowidx=row[row.length-1];
-                        return(
+                        const rowidx = row[row.length - 1];
+                        return (
                             <tr key={rowidx} data-row={rowidx}>
-                            {row.map((cell,colidx)=>{
-                                if(colidx===headers.length)return;
-                                if(edit&&edit.row===rowidx&&edit.col===colidx){
-                                    cell=(
-                                        <form onSubmit={onSaveEdit}>
-                                            <input type="text" defaultValue={cell}/>
-                                        </form>
-                                    );
-                                }
-                                return <td key={colidx}>{cell}</td>
-                            })}
-                        </tr>
+                                {row.map((cell, colidx) => {
+                                    if (colidx === headers.length) return;
+                                    if (edit && edit.row === rowidx && edit.col === colidx) {
+                                        cell = (
+                                            <form onSubmit={onSaveEdit}>
+                                                <input type="text" defaultValue={cell} />
+                                            </form>
+                                        );
+                                    }
+                                    return <td key={colidx}>{cell}</td>
+                                })}
+                            </tr>
                         );
                     })}
                 </tbody>
             </table>
         </div>
     );
+}
+Table.defaultProps = {
+    isadmin: true,
 }
 Table.propTypes = {
     headers: PropTypes.arrayOf(PropTypes.string),

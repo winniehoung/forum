@@ -1,32 +1,33 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './form.css';
+import { useAuth } from "../contexts/AuthContext";
 
 
 function Login() {
-    const [username, setusername] = useState('');
-    const [password, setpassword] = useState('');
+    // const [username, setusername] = useState('');
+    // const [password, setpassword] = useState('');
     const navigate = useNavigate();
-    const login = (e) => {
-        //api call
+
+    const { login } = useAuth();
+    const [credentials, setcredentials] = useState({ username: '', password: '', });
+    const onLogin = (e) => {
         e.preventDefault();
-        if (username === 'win' && password === 'letmein') {
-            navigate('/home');
-        } else {
-            alert('invalid credentials');
-        }
-    };
+        login(credentials);
+        navigate('/home');
+
+    }
     return (
         <div className="formcontainer">
-            <form onSubmit={login} className="card">
+            <form onSubmit={onLogin} className="card">
                 <h3>Login</h3>
                 <div>
                     <label htmlFor="username">Username</label>
-                    <input type="text" id="username" value={username} onChange={(e) => setusername(e.target.value)} required />
+                    <input type="text" value={credentials.username} onChange={(e)=>setcredentials({...credentials,username:e.target.value})} required />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" value={password} onChange={(e) => setpassword(e.target.value)} required />
+                    <input type="password" value={credentials.password} onChange={(e) => setcredentials({...credentials,password:e.target.value})} required />
                 </div>
                 <div className="button">
                     <button type="submit">Login</button>

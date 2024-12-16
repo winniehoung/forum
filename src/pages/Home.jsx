@@ -1,7 +1,14 @@
+import { Navigate } from 'react-router-dom';
 import Table from "../components/Table";
+import { useAuth } from "../contexts/AuthContext";
 import './home.css';
 
 function Home({isadmin}){
+    const {authstate}=useAuth();
+    if(!authstate.isauthenticated){
+        return <Navigate to="/"/>
+    }
+
     const headers=['Title','Author','Date'];
     const initdata=[
         ['Easy Bread Pudding Recipe','win','2024-12-15'],
@@ -23,7 +30,7 @@ function Home({isadmin}){
                     <Table headers={headers} initdata={initdata} isadmin={isadmin}/> 
                 </div>
                 <div className="stats">
-                    <h3>Stats</h3>
+                    <h3>Welcome, {authstate.user.username}</h3>
                 </div>
             </main>
         </div>
