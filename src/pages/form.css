@@ -27,6 +27,7 @@
 .button{
     display: flex;
     gap: 0.9em;
+    margin-top: 1.5em;
 }
 .button button{
     background-color: var(--primary-color);
@@ -38,10 +39,12 @@
     display: flex;
     flex-direction: column;
     margin-inline-start: auto;
+    justify-content: center;
 }
 .links>*{
     text-decoration: none;
-    color: white;
+    color: var(--primary-color);
+    /* font-weight: bold; */
     font-size: 0.7em;
     text-align: right;
 }

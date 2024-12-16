@@ -45,12 +45,12 @@ function Table({ headers, initdata }) {
             }
             return row;
         });
-        dataclone[edit.row][edit.col]=input.value;
+   
+        const presearch=clone(presearchdata);
+        presearch[edit.row][edit.col]=input.value;
+        setpresearchdata(presearch);
         setdata(dataclone);
         setedit(null);
-        // const presearch=clone(presearchdata);
-        // presearch[edit.row][edit.col]=input.value;
-        // setpresearchdata(presearch);
     }
 
     // search table
@@ -72,7 +72,13 @@ function Table({ headers, initdata }) {
         }
         const idx=e.target.dataset.idx;
         const searchdata=presearchdata.filter((row)=>{
-            return row[idx].toString().toLowerCase().indexOf(keyword)>-1;
+            return row.some((cell,colindex)=>{
+                if(colindex===parseInt(idx,10)){
+                    return cell.toString().toLowerCase().includes(keyword);
+                }
+                return false;
+            });
+            // return row[idx].toString().toLowerCase().indexOf(keyword)>-1;
         });
         setdata(searchdata);
     }
@@ -80,7 +86,7 @@ function Table({ headers, initdata }) {
         <tr onChange={onSearch}>
             {headers.map((_,idx)=>(
                 <td key={idx}>
-                    <input type="text" data-idx={idx}/>
+                    <input type="text" data-idx={idx} placeholder={`Search ${headers[idx]}`}/>
                 </td>
             ))}
         </tr>
@@ -105,8 +111,11 @@ function Table({ headers, initdata }) {
                 </thead>
                 <tbody onDoubleClick={onEdit}>
                     {searchboxes}
-                    {data.map((row,rowidx)=>(
-                        <tr key={rowidx} data-row={rowidx}>
+                    {data.map((row)=>{
+                        // record index, not really row index
+                        const rowidx=row[row.length-1];
+                        return(
+                            <tr key={rowidx} data-row={rowidx}>
                             {row.map((cell,colidx)=>{
                                 if(colidx===headers.length)return;
                                 if(edit&&edit.row===rowidx&&edit.col===colidx){
@@ -119,7 +128,8 @@ function Table({ headers, initdata }) {
                                 return <td key={colidx}>{cell}</td>
                             })}
                         </tr>
-                    ))}
+                        );
+                    })}
                 </tbody>
             </table>
         </div>

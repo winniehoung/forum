@@ -32,7 +32,7 @@ function Login() {
                     <button type="submit">Login</button>
                     <div className="links">
                         <a href="#">Forgot Password?</a>
-                        <a href="#">Register</a>
+                        <a href="/register">Register</a>
                         <a href="#">Contact Us</a>
                     </div>
                 </div>

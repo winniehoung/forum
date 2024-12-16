@@ -1,7 +1,7 @@
 import Table from "../components/Table";
 import './home.css';
 
-function Home(){
+function Home({isadmin}){
     const headers=['Title','Author','Date'];
     const initdata=[
         ['Easy Bread Pudding Recipe','win','2024-12-15'],
@@ -20,9 +20,9 @@ function Home(){
             <main className="main">
 
                 <div className="table">
-                    <Table headers={headers} initdata={initdata}/> 
+                    <Table headers={headers} initdata={initdata} isadmin={isadmin}/> 
                 </div>
-                <div className="filters">
+                <div className="stats">
                     <h3>Stats</h3>
                 </div>
             </main>
