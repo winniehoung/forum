@@ -1,3 +1,6 @@
+
+
+/* 
 .App {
   text-align: center;
 }
@@ -22,10 +25,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
-  color: #61dafb;
+/* .App-link {
+  color: var(--primary-color);
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +38,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

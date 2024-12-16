@@ -1,0 +1,50 @@
+.formcontainer{
+    display: flex;
+    justify-content: center;
+
+}
+.card{
+    margin-top: 100px;
+    background-color: #3a3f4b;
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+
+}
+.card input:not([type="checkbox"]):not([type="radio"]){
+    display: block;
+    width: 100%;
+}
+.card h3{
+    margin-bottom: 0;
+    text-align: right;
+    font-size: small;
+    text-transform: uppercase;
+}
+.button{
+    display: flex;
+    gap: 0.9em;
+    margin-top: 1.5em;
+}
+.button button{
+    background-color: var(--primary-color);
+    padding: 0.5em 1em;
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    margin-inline-start: auto;
+    justify-content: center;
+}
+.links>*{
+    text-decoration: none;
+    color: var(--primary-color);
+    /* font-weight: bold; */
+    font-size: 0.7em;
+    text-align: right;
+}
