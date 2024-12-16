@@ -23,7 +23,7 @@ function Home(){
                     <Table headers={headers} initdata={initdata}/> 
                 </div>
                 <div className="filters">
-                    filters go here
+                    <h3>Stats</h3>
                 </div>
             </main>
         </div>

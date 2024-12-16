@@ -1,4 +1,21 @@
-
+.tile{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.buttons{
+    /* padding: 0.5em; */
+    margin-left: 1em;
+    margin-top: 1em;
+}
+button{
+    background-color: var(--primary-color);
+    color: black;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border-radius: 0.4em;
+    font-size: small;
+}
 table{
     border: 1px solid var(--background-color);
     margin: 20px;

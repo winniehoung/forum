@@ -86,8 +86,8 @@ function Table({ headers, initdata }) {
         </tr>
     );
     return (
-        <div>
-            <div>
+        <div className="tile">
+            <div class="buttons">
                 <button onClick={toggleSearch}>
                     {search?'Hide Search':'Show Search'}
                 </button>
@@ -108,6 +108,7 @@ function Table({ headers, initdata }) {
                     {data.map((row,rowidx)=>(
                         <tr key={rowidx} data-row={rowidx}>
                             {row.map((cell,colidx)=>{
+                                if(colidx===headers.length)return;
                                 if(edit&&edit.row===rowidx&&edit.col===colidx){
                                     cell=(
                                         <form onSubmit={onSaveEdit}>
