@@ -138,9 +138,7 @@ function Table({ headers, initdata, isadmin }) {
         </div>
     );
 }
-Table.defaultProps = {
-    isadmin: true,
-}
+
 Table.propTypes = {
     headers: PropTypes.arrayOf(PropTypes.string),
     initdata: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))

@@ -30,10 +30,10 @@
     margin-top: 1.5em;
 }
 .button button{
-    background-color: var(--primary-color);
-    padding: 0.5em 1em;
+    /* background-color: var(--primary-color);
+    padding: 0.5em 1em; */
     margin-top: 0.5em;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 .links{
     display: flex;
@@ -43,8 +43,8 @@
 }
 .links>*{
     text-decoration: none;
-    color: var(--primary-color);
-    /* font-weight: bold; */
+    color: var(--tertiary-color);
+    font-weight: bold;
     font-size: 0.7em;
     text-align: right;
 }

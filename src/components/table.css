@@ -8,7 +8,7 @@
     margin-left: 1em;
     margin-top: 1em;
 }
-button{
+/* button{
     background-color: var(--primary-color);
     color: black;
     padding: 0.5em 1em;
@@ -16,6 +16,9 @@ button{
     border-radius: 0.4em;
     font-size: small;
 }
+button:hover{
+    background-color: #ff6f61;
+} */
 table{
     border: 1px solid var(--background-color);
     margin: 20px;

@@ -21,11 +21,12 @@ export const AuthProvider=({children})=>{
             alert('invalid credentials');
         }
     };
-    const logout=()=>{
+    const logout=(navigate)=>{
         setauthstate({
             isauthenticated:false,
             user:null,
         });
+        navigate("/");
     }
     return(
         <AuthContext.Provider value={{authstate,login,logout}}>

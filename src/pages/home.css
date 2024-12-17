@@ -19,11 +19,16 @@
 }
 .nav>a{
     background-color: var(--primary-color);
-    color: black;
     padding: 0.5em 1em;
     font-weight: bold;
     border-radius: 0.4em;
 
+}
+.nav>a:hover{
+    background-color: var(--secondary-color);
+}
+.navright{
+    margin-inline-start: auto;
 }
 
 .main{
