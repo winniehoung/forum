@@ -5,19 +5,20 @@ import PropTypes from "prop-types";
 import { useAuth } from "../contexts/AuthContext";
 
 function Table({ headers, initdata }) {
-    const {authstate}=useAuth();
+    const { authstate } = useAuth();
     const [data, setdata] = useState(
-        // concat a record id for keyword searching
-        clone(initdata).map((row, idx) => row.concat(idx)),
+        []
     );
     const [sort, setsort] = useState({ col: null, desc: false });
     const [edit, setedit] = useState(null);
     const [search, setsearch] = useState(false);
     const [presearchdata, setpresearchdata] = useState(null);
 
-    useEffect(()=>{
-        console.log('init data',initdata);
-    },[initdata]);
+    useEffect(() => {
+        // console.log('init data', initdata);
+        // concat a record id for keyword searching
+        setdata(clone(initdata).map((row, idx) => row.concat(idx)));
+    }, [initdata]);
     // sort table by click
     const onSort = (e) => {
         const col = e.target.cellIndex;
@@ -115,7 +116,7 @@ function Table({ headers, initdata }) {
                             if (sort.col === idx) {
                                 header += sort.desc ? '\u2191' : '\u2193';
                             }
-                            return <th key={idx} className={sort.col===idx?'accent':null}>{header}</th>
+                            return <th key={idx} className={sort.col === idx ? 'accent' : null}>{header}</th>
                         })
                         }
                     </tr>
