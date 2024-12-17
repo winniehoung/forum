@@ -60,6 +60,7 @@ function Table({ headers, initdata }) {
 
     // search table
     const toggleSearch = () => {
+        console.log(initdata);
         if (search) {
             setdata(presearchdata);
             setsearch(false);
@@ -98,7 +99,7 @@ function Table({ headers, initdata }) {
     );
     return (
         <div className="tile">
-            <div class="buttons">
+            <div className="buttons">
                 <button onClick={toggleSearch}>
                     {search ? 'Hide Search' : 'Show Search'}
                 </button>
@@ -118,6 +119,7 @@ function Table({ headers, initdata }) {
                 </thead>
                 <tbody onDoubleClick={authstate.user.isadmin ? onEdit : null}>
                     {searchboxes}
+
                     {data.map((row) => {
                         // record index, not really row index
                         const rowidx = row[row.length - 1];
