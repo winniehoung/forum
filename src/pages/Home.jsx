@@ -4,10 +4,10 @@ import { useAuth } from "../contexts/AuthContext";
 import './home.css';
 import Nav from '../components/Nav';
 
-// todo: remove isadmin
-function Home({ isadmin }) {
-    const { authstate,logout } = useAuth();
-    const navigate=useNavigate();
+function Home() {
+    const { authstate } = useAuth();
+    // const navigate=useNavigate();
+
     if (!authstate.isauthenticated) {
         return <Navigate to="/" />
     }
@@ -19,19 +19,14 @@ function Home({ isadmin }) {
         ['Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
         ['Holiday Treats', 'seabass', '2020-12-12'],
     ];
-    const onLogout=()=>{
-        logout(navigate);
-    }
-    const onHome=()=>{
-        navigate('/home');
-    }
+
     return (
         <div className="container">
             <Nav/>
             <main className="main">
 
                 <div className="table">
-                    <Table headers={headers} initdata={initdata} isadmin={isadmin} />
+                    <Table headers={headers} initdata={initdata} isadmin={authstate.user.isadmin} />
                 </div>
                 <div className="stats">
                     <h3>Welcome, {authstate.user.username}</h3>
@@ -41,7 +36,7 @@ function Home({ isadmin }) {
     )
 
 }
-Home.defaultProps = {
-    isadmin: false,
-}
+// Home.defaultProps = {
+//     isadmin: false,
+// }
 export default Home;

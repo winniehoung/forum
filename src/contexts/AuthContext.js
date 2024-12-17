@@ -15,7 +15,7 @@ export const AuthProvider=({children})=>{
         if (credentials.username === 'win' && credentials.password === 'letmein') {
             setauthstate({
                 isauthenticated:true,
-                user:credentials,
+                user:{...credentials,isadmin:false,},
             });
         } else {
             alert('invalid credentials');
