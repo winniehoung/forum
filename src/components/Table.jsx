@@ -2,8 +2,10 @@ import { useState } from "react";
 import { clone } from "../utils/helpers";
 import './table.css';
 import PropTypes from "prop-types";
+import { useAuth } from "../contexts/AuthContext";
 
-function Table({ headers, initdata, isadmin }) {
+function Table({ headers, initdata }) {
+    const {authstate}=useAuth();
     const [data, setdata] = useState(
         // concat a record id for keyword searching
         clone(initdata).map((row, idx) => row.concat(idx)),
@@ -114,7 +116,7 @@ function Table({ headers, initdata, isadmin }) {
                         }
                     </tr>
                 </thead>
-                <tbody onDoubleClick={isadmin ? onEdit : null}>
+                <tbody onDoubleClick={authstate.user.isadmin ? onEdit : null}>
                     {searchboxes}
                     {data.map((row) => {
                         // record index, not really row index
