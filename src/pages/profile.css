@@ -9,3 +9,32 @@
 .userinfo img{
     height: 70px;
 }
+.userdetail>*{
+    margin: 0;
+    padding: 0;
+}
+.userdetail>*+*{
+    margin-top: 0.5em;
+}
+hr{
+    border: none;
+    height: 1px;
+    border-top: 1px solid darkgray;
+    margin: 0 27px;
+    /* width: 27px;
+    padding: 0;
+    margin: 0; */
+}
+.topposts{
+    margin: 0;
+    padding-top: 0;
+    /* padding: 0; */
+}
+.topposts>p{
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-left: 8px;
+}
+.topposts>*{
+    margin: 0;
+}

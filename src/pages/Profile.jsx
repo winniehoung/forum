@@ -39,6 +39,10 @@ function Profile() {
                             <p>2024-12-12</p>
                         </div>
                     </div>
+                    <hr></hr>
+                    <div className="topposts">
+                        <p>Popular Posts</p>
+                    </div>
                 </div>
             </main>
         </div>
