@@ -1,0 +1,11 @@
+.userinfo{
+    display: flex;
+    align-content: center;
+    margin-top: 2em;
+    align-items: center;
+    align-content: space-evenly;
+    gap: 2em;
+}
+.userinfo img{
+    height: 70px;
+}
