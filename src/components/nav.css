@@ -25,3 +25,6 @@
 .navright{
     margin-inline-start: auto;
 }
+.activetab{
+    color: var(--primary-color);
+}

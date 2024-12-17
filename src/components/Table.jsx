@@ -6,16 +6,13 @@ import { useAuth } from "../contexts/AuthContext";
 
 function Table({ headers, initdata }) {
     const { authstate } = useAuth();
-    const [data, setdata] = useState(
-        []
-    );
+    const [data, setdata] = useState([]);
     const [sort, setsort] = useState({ col: null, desc: false });
     const [edit, setedit] = useState(null);
     const [search, setsearch] = useState(false);
     const [presearchdata, setpresearchdata] = useState(null);
 
     useEffect(() => {
-        // console.log('init data', initdata);
         // concat a record id for keyword searching
         setdata(clone(initdata).map((row, idx) => row.concat(idx)));
     }, [initdata]);

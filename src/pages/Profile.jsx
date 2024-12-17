@@ -31,7 +31,7 @@ function Profile() {
     }
 
 
-    const tabs = ['Published', 'Drafts', 'Hidden', 'Archived'];
+    const tabs = ['Published', 'Drafts', 'Hidden', 'Archived','History'];
     const publishedheaders = ['Title', 'Date', 'Status', '\u{1F4E6}'];
     const draftheaders = ['Title', 'Date'];
     const publisheddata = [
@@ -57,7 +57,7 @@ function Profile() {
                 <div className="table">
                     <div className="tabs">
                         {tabs.map((tab, idx) => (
-                            <a key={idx} className={`tab ${activetab === tab ? 'activetab' : ''}`} onClick={() => { setactivetab(tab);setTabData() }}>{tab}</a>
+                            <a key={idx} className={`tab ${activetab === tab ? 'activetab' : ''} ${tab==='History'?'historytab':''}`} onClick={() => { setactivetab(tab);setTabData() }}>{tab}</a>
                         ))}
                     </div>
                     {activetabdata&&<Table headers={getTabHeaders()} initdata={activetabdata} isadmin={authstate.user.isadmin} />}

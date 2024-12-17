@@ -53,3 +53,6 @@ hr{
     background-color: var(--background-light);
     color: var(--primary-color);
 }
+.historytab{
+    margin-inline-start: auto;
+}
