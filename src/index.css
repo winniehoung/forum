@@ -1,7 +1,7 @@
 :root{
-  --primary-color: #5c6bc0;
-  --secondary-color: #3f51a5;
-  --tertiary-color: #9fa8da;
+  --primary-color: #1e90ff;
+  --secondary-color: #0066cc;
+  --tertiary-color: #45b8d0;
   --background-light: #3a3f4b;
   --background-color: #282c32;
 }
@@ -40,4 +40,7 @@ button{
 }
 button:hover{
   background-color: var(--secondary-color);
+}
+.accent{
+  color: gold;
 }

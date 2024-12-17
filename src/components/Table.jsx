@@ -106,8 +106,10 @@ function Table({ headers, initdata, isadmin }) {
                 <thead onClick={onSort}>
                     <tr>
                         {headers.map((header, idx) => {
-                            if (sort.col === idx) header += sort.desc ? '\u2191' : '\u2193';
-                            return <th key={idx}>{header}</th>
+                            if (sort.col === idx) {
+                                header += sort.desc ? '\u2191' : '\u2193';
+                            }
+                            return <th key={idx} className={sort.col===idx?'accent':null}>{header}</th>
                         })
                         }
                     </tr>
