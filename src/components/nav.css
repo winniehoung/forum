@@ -11,7 +11,7 @@
     border-radius: 0.4em;
 }
 .nav>a{
-    /* background-color: var(--primary-color); */
+    /* background-color: var(--background-light); */
     padding: 0.5em 1em;
     font-weight: bold;
     border-radius: 0.4em;

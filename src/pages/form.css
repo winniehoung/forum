@@ -44,7 +44,7 @@
 .links>*{
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 0.7em;
     text-align: right;
 }

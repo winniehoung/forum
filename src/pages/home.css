@@ -8,28 +8,6 @@
     margin: unset;
     padding: 0.5em 0.5em;
 }
-.nav{
-    display: flex;
-    flex-direction: row;
-    background-color: var(--background-light);
-    gap: 0.5em;
-    padding: 0.5em;
-    margin: 0 0.5em;
-    border-radius: 0.4em;
-}
-.nav>a{
-    background-color: var(--primary-color);
-    padding: 0.5em 1em;
-    font-weight: bold;
-    border-radius: 0.4em;
-
-}
-.nav>a:hover{
-    background-color: var(--secondary-color);
-}
-.navright{
-    margin-inline-start: auto;
-}
 
 .main{
     display: flex;

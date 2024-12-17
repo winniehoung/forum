@@ -2,6 +2,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Table from "../components/Table";
 import { useAuth } from "../contexts/AuthContext";
 import './home.css';
+import Nav from '../components/Nav';
 
 // todo: remove isadmin
 function Home({ isadmin }) {
@@ -26,26 +27,7 @@ function Home({ isadmin }) {
     }
     return (
         <div className="container">
-            <h1 onClick={onHome}>ChatPad</h1>
-            <nav className="nav">
-                {
-                    isadmin ? (
-                        <>
-                            <a href="/posts">Posts</a>
-                            <a href="/users">Users</a>
-                            <a href="/messages">Messages</a>
-
-                        </>
-                    ) : (
-                        <>
-                            <a href="/profile">Profile</a>
-                            <a href="/contactus">Contact Us</a>
-                        </>
-                    )
-                }
-                <a onClick={onLogout} className='navright'>Logout</a>
-
-            </nav>
+            <Nav/>
             <main className="main">
 
                 <div className="table">
