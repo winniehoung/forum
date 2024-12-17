@@ -38,3 +38,13 @@ hr{
 .topposts>*{
     margin: 0;
 }
+.tabs{
+    display: flex;
+    gap: 0.05em;
+}
+.tab{
+    background-color: var(--background-color);
+    padding: 0.5em 1em;
+    color: white;
+    border-radius: 0.09em;
+}

@@ -14,6 +14,7 @@ function Profile() {
         return <Navigate to="/" />
     }
 
+    const tabs = ['Published', 'Drafts', 'Hidden', 'Archived'];
     const headers = ['Title', 'Date', 'Status', '\u{1F4E6}'];
     const initdata = [
         ['Easy Bread Pudding Recipe', '2024-12-15', 'Active', '\u{1F4E6}'],
@@ -26,8 +27,12 @@ function Profile() {
         <div className="container">
             <Nav />
             <main className="main">
-
                 <div className="table">
+                    <div className="tabs">
+                        {tabs.map((tab, index) => (
+                            <a key={index} className="tab">{tab}</a>
+                        ))}
+                    </div>
                     <Table headers={headers} initdata={initdata} isadmin={authstate.user.isadmin} />
                 </div>
                 <div className="stats">
