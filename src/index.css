@@ -4,6 +4,7 @@
   --tertiary-color: #45b8d0;
   --background-light: #3a3f4b;
   --background-color: #282c32;
+  --background-transparent:rgba(40,44,50,0.65);
 }
 *{
   box-sizing: border-box;
