@@ -51,4 +51,5 @@ hr{
 }
 .activetab{
     background-color: var(--background-light);
+    color: var(--primary-color);
 }
