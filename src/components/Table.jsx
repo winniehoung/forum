@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { clone } from "../utils/helpers";
 import './table.css';
 import PropTypes from "prop-types";
@@ -15,6 +15,9 @@ function Table({ headers, initdata }) {
     const [search, setsearch] = useState(false);
     const [presearchdata, setpresearchdata] = useState(null);
 
+    useEffect(()=>{
+        console.log('init data',initdata);
+    },[initdata]);
     // sort table by click
     const onSort = (e) => {
         const col = e.target.cellIndex;
