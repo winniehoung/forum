@@ -10,6 +10,11 @@
     margin: 0 0.5em;
     border-radius: 0.4em;
 }
+.heading{
+    margin: unset;
+    padding: 0.5em 0.5em;
+}
+
 .nav>a{
     /* background-color: var(--background-light); */
     padding: 0.5em 1em;

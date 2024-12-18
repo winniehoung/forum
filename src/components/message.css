@@ -2,16 +2,21 @@
 
 .contactuscard{
     margin-top: 40px;
-    background-color: #3a3f4b;
+    background-color: var(--background-light);
     padding: 1em 2em;
     border-radius: 0.5em;
-    min-width: 350px;
+    /* min-width: 350px; */
+    max-width: 550px;
     display: flex;
     flex-direction: column;
     gap: 0.8em;
 
 }
 .contactuscard input:not([type="checkbox"]):not([type="radio"]){
+    display: block;
+    width: 100%;
+}
+textarea{
     display: block;
     width: 100%;
 }
