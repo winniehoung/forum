@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 function Table({ headers, initdata }) {
     const { authstate } = useAuth();
     // for conditional rendering of detail page
-    const location=useLocation();
+    const location = useLocation();
 
     const [data, setdata] = useState([]);
     const [sort, setsort] = useState({ col: null, desc: false });
@@ -23,7 +23,7 @@ function Table({ headers, initdata }) {
     }, [initdata]);
     // sort table by click
     const onSort = (e) => {
-        const col = e.target.cellIndex+1;
+        const col = e.target.cellIndex + 1;
         const desc = sort.col === col && !sort.desc;
         const dataclone = clone(data);
         dataclone.sort((a, b) => {
@@ -41,7 +41,7 @@ function Table({ headers, initdata }) {
     const onEdit = (e) => {
         setedit({
             row: parseInt(e.target.parentNode.dataset.row, 10),
-            col: e.target.cellIndex,
+            col: e.target.cellIndex+1,
         });
     }
     const onSaveEdit = (e) => {
@@ -85,7 +85,7 @@ function Table({ headers, initdata }) {
         const idx = e.target.dataset.idx;
         const searchdata = presearchdata.filter((row) => {
             return row.some((cell, colindex) => {
-                if (colindex === parseInt(idx, 10)+1) {
+                if (colindex === parseInt(idx, 10) + 1) {
                     return cell.toString().toLowerCase().includes(keyword);
                 }
                 return false;
@@ -96,11 +96,12 @@ function Table({ headers, initdata }) {
     }
     const searchboxes = !search ? null : (
         <tr onChange={onSearch}>
-            {headers.map((_, idx) => (
-                <td key={idx}>
-                    <input type="text" data-idx={idx} placeholder={`Search ${headers.length>4?'':headers[idx]}`} className={headers.length>4?'searchbox':''}/>
+            {headers.map((_, idx) => {
+                if(idx===0)return;
+                return <td key={idx}>
+                    <input type="text" data-idx={idx} placeholder={`Search ${headers.length > 4 ? '' : headers[idx]}`} className={headers.length > 4 ? 'searchbox' : ''} />
                 </td>
-            ))}
+            })}
         </tr>
     );
     // toggle status not registering on dom
@@ -125,7 +126,7 @@ function Table({ headers, initdata }) {
                 <thead onClick={onSort}>
                     <tr>
                         {headers.map((header, idx) => {
-                            if(idx===0)return;
+                            if (idx === 0) return;
                             if (sort.col === idx) {
                                 header += sort.desc ? '\u2191' : '\u2193';
                             }
@@ -143,7 +144,7 @@ function Table({ headers, initdata }) {
                         return (
                             <tr key={rowidx} data-row={rowidx}>
                                 {row.map((cell, colidx) => {
-                                    if (colidx === 0||colidx===headers.length) return;
+                                    if (colidx === 0 || colidx === headers.length) return;
 
                                     if (edit && edit.row === rowidx && edit.col === colidx) {
                                         cell = (
@@ -152,10 +153,10 @@ function Table({ headers, initdata }) {
                                             </form>
                                         );
                                     }
-                                    if(colidx===0&&location.pathname==='/home'){
+                                    if (colidx === 0 && location.pathname === '/home') {
                                         return <td key={colidx}>{cell}</td>
                                     }
-                                return <td key={colidx} className={cell==='Active'?'green':cell==='Inactive'?'red':''}>{cell}</td>
+                                    return <td key={colidx} className={cell === 'Active' ? 'green' : cell === 'Inactive' ? 'red' : ''}>{cell}</td>
                                 })}
                             </tr>
                         );
