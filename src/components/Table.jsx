@@ -121,7 +121,8 @@ function Table({ headers, initdata }) {
                 <p className="button" onClick={toggleSearch}>
                     {search ? 'Hide Search' : 'Show Search'}
                 </p>
-                <p className="addpost">+</p>
+                {!authstate.user.isadmin&&location.pathname==='/home'&&<p className="addpost">+</p>}
+
             </div>
 
             <table>
