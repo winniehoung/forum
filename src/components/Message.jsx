@@ -39,7 +39,7 @@ function Message() {
                 <div className="button">
                     <button type="submit">Submit</button>
                     <div className="links">
-                        {authstate.isauthenticated && <a href="#">Return Home</a>}
+                        {authstate.isauthenticated && <a onClick={()=>navigate('/home')}>We will get back to you soon!</a>}
                         {!authstate.isauthenticated && <a href="/">Back to Login</a>}
                     </div>
                 </div>
