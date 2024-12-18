@@ -1,0 +1,8 @@
+.contactuscontainer{
+    display: flex;
+    flex-direction: column;
+}
+.contactuscontainer h1{
+    margin: unset;
+    padding: 0.5em 0.5em;
+}

@@ -5,8 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 
 function Login() {
-    // const [username, setusername] = useState('');
-    // const [password, setpassword] = useState('');
+
     const navigate = useNavigate();
 
     const { login } = useAuth();

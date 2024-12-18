@@ -30,10 +30,8 @@
     margin-top: 1.5em;
 }
 .button button{
-    /* background-color: var(--primary-color);
-    padding: 0.5em 1em; */
+
     margin-top: 0.5em;
-    /* font-weight: bold; */
 }
 .links{
     display: flex;
@@ -51,3 +49,4 @@
 .links>*:hover{
     color: lightgray;
 }
+

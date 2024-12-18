@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import Users from './pages/Users';
 import UserRoute from './utils/UserRoute';
 import AdminRoute from './utils/AdminRoute';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/home" element={<UserRoute><Home /></UserRoute>} />
           <Route path="/profile" element={<UserRoute><Profile /></UserRoute>}/>
           <Route path='/users' element={<AdminRoute><Users/></AdminRoute>}/>
+          <Route path='/contactus' element={<UserRoute><ContactUs/></UserRoute>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

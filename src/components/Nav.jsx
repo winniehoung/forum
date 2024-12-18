@@ -17,10 +17,7 @@ function Nav() {
         setactivetab('Home');
         navigate('/home');
     }
-    const onProfile=()=>{
-        // setactivetab('Profile');
-        navigate('/profile');
-    }
+
     const onPosts=()=>{
         setactivetab('Posts');
         navigate('/home');
@@ -49,7 +46,7 @@ function Nav() {
                         <>
                             <a onClick={()=>onTab('Home','/home')} className={activetab==='Home'?'activetab':''}>Home</a>
                             <a onClick={()=>onTab('Profile','/profile')} className={activetab==='Profile'?'activetab':''}>Profile</a>
-                            <a href="/contactus">Contact Us</a>
+                            <a onClick={()=>onTab('Contact Us','/contactus')} className={activetab==='Contact Us'?'activetab':''}>Contact Us</a>
                         </>
                     )
                 }
