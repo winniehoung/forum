@@ -13,8 +13,8 @@ function Users() {
 
     const headers = ['ID','First Name','Last Name','Email','Registered','Type','Status'];
     const data = [
-        ['1','win','houng','18whoung@gmail123211111111111111111','2021','admin','active'],
-        ['2','seabass','houng','seabass@gmail','2020','user','active'],
+        ['1','win','houng','18whoung@gmail123211111111111111111','2021','admin','Active'],
+        ['2','seabass','houng','seabass@gmail','2020','user','Inactive'],
     ];
    
 

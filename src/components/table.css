@@ -38,8 +38,21 @@ td{
     max-width: 130px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .searchbox{
     max-width: 150px;
 }
+.green{
+    color: greenyellow;
+}
+/* .green:hover{
+    color: red;
+} */
+.red{
+    color: red;
+}
+/* .red:hover{
+    color: greenyellow;
+} */

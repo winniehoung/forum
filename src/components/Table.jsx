@@ -98,6 +98,16 @@ function Table({ headers, initdata }) {
             ))}
         </tr>
     );
+    // toggle status not registering on dom
+    // const onToggle = (e) => {
+    //     if (e.target.tagname==='TD'&&e.target.cellIndex === headers.length) {
+    //         console.log('toggle');
+    //         const rowidx = parseInt(e.target.parentNode.dataset.row, 10);
+    //         const dataclone = clone(data);
+    //         dataclone[rowidx][headers.length - 1] = dataclone[rowidx][headers.length - 1] === 'Active' ? 'Inactive' : 'Active';
+    //         setdata(dataclone);
+    //     }
+    // }
     return (
         <div className="tile">
             <div className="buttons">
@@ -118,7 +128,7 @@ function Table({ headers, initdata }) {
                         }
                     </tr>
                 </thead>
-                <tbody onDoubleClick={authstate.user.isadmin ? onEdit : null}>
+                <tbody onDoubleClick={authstate.user.isadmin ? onEdit : null} >
                     {searchboxes}
 
                     {data.map((row) => {
@@ -135,7 +145,8 @@ function Table({ headers, initdata }) {
                                             </form>
                                         );
                                     }
-                                    return <td key={colidx}>{cell}</td>
+                                    
+                                return <td key={colidx} className={cell==='Active'?'green':cell==='Inactive'?'red':''}>{cell}</td>
                                 })}
                             </tr>
                         );

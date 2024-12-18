@@ -3,14 +3,28 @@ import Table from "../components/Table";
 import { useAuth } from "../contexts/AuthContext";
 import './home.css';
 import Nav from '../components/Nav';
+import { useState } from 'react';
 
 function Home() {
     const { authstate } = useAuth();
     // const navigate=useNavigate();
-
+    const [activetab, setactivetab] = useState('All');
+    // const [activetabdata, setactivetabdata] = useState(data);
     if (!authstate.isauthenticated) {
         return <Navigate to="/" />
     }
+
+    // const setTabData = () => {
+    //     switch (activetab) {
+    //         case 'All':setactivetabdata(data);break;
+    //         case 'Deleted':setactivetabdata(data);break;
+    //         default: setactivetabdata(data);break;
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     setTabData();
+    // }, [activetab]);
 
     const headers = ['Title', 'Author', 'Date'];
     const data = [
@@ -28,14 +42,24 @@ function Home() {
         ['Holiday Treats', 'seabass', '2020-12-12','Inactive'],
     ];
 
+    const tabs=['All', 'Deleted'];
     return (
         <div className="container">
             <Nav/>
             <main className="main">
 
+            
                 <div className="table">
+                    {
+                        authstate.user.isadmin&&<div className='tabs'>
+                            {tabs.map((tab, idx)=><a key={idx} onClick={()=>setactivetab(tab)} className={`tab ${activetab === tab ? 'activetab' : ''}`}>{tab}</a>)}
+                        </div>
+                    }
+
                     <Table headers={authstate.user.isadmin?adminheaders:headers} initdata={authstate.user.isadmin?admindata:data} isadmin={authstate.user.isadmin} />
                 </div>
+             
+                
                 <div className="stats">
                     <h3>Welcome, {authstate.user.username}</h3>
                 </div>
