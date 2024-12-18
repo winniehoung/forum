@@ -7,6 +7,9 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import { AuthProvider } from './contexts/AuthContext';
+import MessageManagement from "./pages/MessageManagement";
+import AdminRoute from "./routes/AdminRoute";
+
 
 function App() {
   return (
@@ -17,6 +20,16 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
+            <Route path="/messages" element={<MessageManagement />} />
+          {/*<Route*/}
+          {/*    path="/messages"*/}
+          {/*    element={*/}
+          {/*      <AdminRoute>*/}
+          {/*        <MessageManagement />*/}
+          {/*      </AdminRoute>*/}
+          {/*    }*/}
+          {/*/>*/}
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>
