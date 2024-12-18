@@ -1,20 +1,42 @@
-.tile{
+.tile {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
-.buttons{
-    /* padding: 0.5em; */
-    margin-left: 1em;
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons .button {
+    background-color: var(--primary-color);
+    color: black;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border-radius: 0.4em;
+    font-size: small;
+    align-self: flex-start;
+    margin: 1.5em;
+}
+
+.buttons .button:hover {
+    background-color: var(--secondary-color);
+}
+
+.buttons .addpost {
+    margin-inline-start: auto;
     margin-top: 1em;
+    margin-right: 1em;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: x-large;
 }
-/* button{
-    background-color: var(--tertiary-color);
+buttons .addpost:hover{
+    color: gold;
 }
-button:hover{
-    background-color: #ff6f61;
-} */
-table{
+
+table {
     border: 1px solid var(--background-color);
     margin: 20px;
     min-width: 85%;
@@ -24,15 +46,17 @@ table{
     overflow-x: hidden;
 }
 
-th{
+th {
     padding: 0.5em;
     cursor: pointer;
     /* border: gray; */
 }
-tr{
+
+tr {
     border: 1px solid var(--background-color);
 }
-td{
+
+td {
     padding: 0.5em;
     cursor: cell;
     max-width: 130px;
@@ -41,18 +65,17 @@ td{
     white-space: nowrap;
 }
 
-.searchbox{
+.searchbox {
     max-width: 150px;
 }
-.green{
+
+.green {
     color: greenyellow;
 }
+
 /* .green:hover{
     color: red;
 } */
-.red{
+.red {
     color: red;
 }
-/* .red:hover{
-    color: greenyellow;
-} */

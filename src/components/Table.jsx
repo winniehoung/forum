@@ -118,9 +118,10 @@ function Table({ headers, initdata }) {
     return (
         <div className="tile">
             <div className="buttons">
-                <button onClick={toggleSearch}>
+                <p className="button" onClick={toggleSearch}>
                     {search ? 'Hide Search' : 'Show Search'}
-                </button>
+                </p>
+                <p className="addpost">+</p>
             </div>
 
             <table>
