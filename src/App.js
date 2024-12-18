@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import { AuthProvider } from './contexts/AuthContext';
 import MessageManagement from "./pages/MessageManagement";
+import ContactUs from "./pages/ContactUs";
 import AdminRoute from "./routes/AdminRoute";
 
 
@@ -20,7 +21,9 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
-            <Route path="/messages" element={<MessageManagement />} />
+          <Route path="/messages" element={<MessageManagement />} />
+          <Route path="/contactus" element={<ContactUs />} />
+
           {/*<Route*/}
           {/*    path="/messages"*/}
           {/*    element={*/}

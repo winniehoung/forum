@@ -23,3 +23,12 @@ export const updateMessage = async (messageId, updatedMessage) => {
         throw error;
     }
 };
+
+export const createMessage = async (messageData) => {
+    try {
+        const response = await axios.post(API_BASE_URL, messageData);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Failed to send message');
+    }
+};
