@@ -43,5 +43,5 @@ button:hover{
   background-color: var(--secondary-color);
 }
 .accent{
-  color: gold;
+  color: var(--primary-color);
 }

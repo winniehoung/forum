@@ -18,7 +18,7 @@ function Nav() {
         navigate('/home');
     }
     const onProfile=()=>{
-        setactivetab('Profile');
+        // setactivetab('Profile');
         navigate('/profile');
     }
     const onPosts=()=>{
@@ -29,7 +29,10 @@ function Nav() {
         setactivetab('Users');
         navigate('/users');
     }
-    useEffect(()=>{},[activetab]);
+    const onTab=(tab,path)=>{
+        setactivetab(tab);
+        navigate(path);
+    }
     return (
         <>
             <h1 onClick={onHome} className="heading">ChatPad</h1>
@@ -44,8 +47,8 @@ function Nav() {
                         </>
                     ) : (
                         <>
-                            <a onClick={onHome} className={activetab==='Home'?'activetab':''}>Home</a>
-                            <a onClick={onProfile} className={activetab==='Profile'?'activetab':''}>Profile</a>
+                            <a onClick={()=>onTab('Home','/home')} className={activetab==='Home'?'activetab':''}>Home</a>
+                            <a onClick={()=>onTab('Profile','/profile')} className={activetab==='Profile'?'activetab':''}>Profile</a>
                             <a href="/contactus">Contact Us</a>
                         </>
                     )

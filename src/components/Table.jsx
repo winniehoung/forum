@@ -4,6 +4,7 @@ import './table.css';
 import PropTypes from "prop-types";
 import { useAuth } from "../contexts/AuthContext";
 import { useLocation } from "react-router-dom";
+import Suggest from "./Suggest";
 
 function Table({ headers, initdata }) {
     const { authstate } = useAuth();
@@ -147,14 +148,17 @@ function Table({ headers, initdata }) {
                                     if (colidx === 0 || colidx === headers.length) return;
 
                                     if (edit && edit.row === rowidx && edit.col === colidx) {
+                                        const statusoptions=['Active','Inactive'];
                                         cell = (
                                             <form onSubmit={onSaveEdit}>
-                                                <input type="text" defaultValue={cell} />
+                                                <input type="text" defaultValue={cell} list={`${rowidx}-${colidx}`}/>
+                                                {/* <Suggest id={`${rowidx}-${colidx}`} defaultvalue={cell} options={statusoptions}/> */}
+                                                
                                             </form>
                                         );
                                     }
                                     if (colidx === 0 && location.pathname === '/home') {
-                                        return <td key={colidx}>{cell}</td>
+                                        return <td key={colidx} className="postdetails" >{cell}</td>
                                     }
                                     return <td key={colidx} className={cell === 'Active' ? 'green' : cell === 'Inactive' ? 'red' : ''}>{cell}</td>
                                 })}
