@@ -18,7 +18,7 @@
 .table{
     flex: 2;
     background-color: var(--background-light);
-    min-height: 300px;
+    min-height: 450px;
     border-radius: 0.4em;
 }
 .stats{

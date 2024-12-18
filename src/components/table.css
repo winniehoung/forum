@@ -18,9 +18,10 @@ table{
     border: 1px solid var(--background-color);
     margin: 20px;
     min-width: 95%;
+    /* max-width: 100%; */
     text-align: left;
     border-collapse: collapse;
-
+    overflow-x: hidden;
 }
 
 th{
@@ -34,4 +35,8 @@ tr{
 td{
     padding: 0.5em;
     cursor: cell;
+}
+
+.searchbox{
+    max-width: 150px;
 }

@@ -93,7 +93,7 @@ function Table({ headers, initdata }) {
         <tr onChange={onSearch}>
             {headers.map((_, idx) => (
                 <td key={idx}>
-                    <input type="text" data-idx={idx} placeholder={`Search ${headers[idx]}`} />
+                    <input type="text" data-idx={idx} placeholder={`Search ${headers.length>4?'':headers[idx]}`} className={headers.length>4?'searchbox':''}/>
                 </td>
             ))}
         </tr>
