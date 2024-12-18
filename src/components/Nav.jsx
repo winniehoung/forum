@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import './nav.css';
 import { useEffect, useState } from "react";
 
+// todo: fix double click problem, state not updating immediately
 function Nav() {
 
     const { authstate,logout } = useAuth();

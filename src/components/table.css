@@ -35,6 +35,9 @@ tr{
 td{
     padding: 0.5em;
     cursor: cell;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .searchbox{
