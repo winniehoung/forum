@@ -26,9 +26,9 @@ function Profile() {
         setTabData();
     }, [activetab]);
 
-    if (!authstate.isauthenticated) {
-        return <Navigate to="/" />
-    }
+    // if (!authstate.isauthenticated) {
+    //     return <Navigate to="/" />
+    // }
 
 
     const tabs = ['Published', 'Drafts', 'Hidden', 'Archived','History'];

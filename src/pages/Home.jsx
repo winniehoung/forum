@@ -1,31 +1,35 @@
-import { Navigate, useNavigate } from 'react-router-dom';
+// import { Navigate, useNavigate } from 'react-router-dom';
 import Table from "../components/Table";
 import { useAuth } from "../contexts/AuthContext";
 import './home.css';
 import Nav from '../components/Nav';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Home() {
     const { authstate } = useAuth();
-    // const navigate=useNavigate();
+    // deleted or all posts
     const [activetab, setactivetab] = useState('All');
-    // const [activetabdata, setactivetabdata] = useState(data);
-    // if (!authstate.isauthenticated) {
-    //     return <Navigate to="/" />
-    // }
+    const [activetabdata, setactivetabdata] = useState([]);
 
-    // const setTabData = () => {
-    //     switch (activetab) {
-    //         case 'All':setactivetabdata(data);break;
-    //         case 'Deleted':setactivetabdata(data);break;
-    //         default: setactivetabdata(data);break;
-    //     }
-    // }
+    const setTabData = () => {
+        switch (activetab) {
+            case 'All':setactivetabdata(data);break;
+            case 'Deleted':setactivetabdata(deleteddata);break;
+            default: setactivetabdata(data);break;
+        }
+    }
 
-    // useEffect(() => {
-    //     setTabData();
-    // }, [activetab]);
+    useEffect(() => {
+        setTabData();
+    }, [activetab]);
 
+    // admin tabs: for deleted posts
+    const deleteddata=[
+        ['Easy Bread Pudding Recipe', 'win', '2024-12-15'],
+        ['Zwilling Chopsticks', 'win', '2024-12-33',],
+        ['Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
+    ];
+    // admin data and user data
     const headers = ['Title', 'Author', 'Date'];
     const data = [
         ['Easy Bread Pudding Recipe', 'win', '2024-12-15'],
@@ -52,11 +56,11 @@ function Home() {
                 <div className="table">
                     {
                         authstate.user.isadmin&&<div className='tabs'>
-                            {tabs.map((tab, idx)=><a key={idx} onClick={()=>setactivetab(tab)} className={`tab ${activetab === tab ? 'activetab' : ''}`}>{tab}</a>)}
+                            {tabs.map((tab, idx)=><a key={idx} onClick={()=>{setactivetab(tab);setTabData()}} className={`tab ${activetab === tab ? 'activetab' : ''}`}>{tab}</a>)}
                         </div>
                     }
 
-                    <Table headers={authstate.user.isadmin?adminheaders:headers} initdata={authstate.user.isadmin?admindata:data} isadmin={authstate.user.isadmin} />
+                    <Table headers={authstate.user.isadmin?activetab==='All'?adminheaders:headers:headers} initdata={authstate.user.isadmin?activetab==='All'?admindata:deleteddata:data} isadmin={authstate.user.isadmin} />
                 </div>
              
                 
