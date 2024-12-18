@@ -10,9 +10,9 @@ function Home() {
     // const navigate=useNavigate();
     const [activetab, setactivetab] = useState('All');
     // const [activetabdata, setactivetabdata] = useState(data);
-    if (!authstate.isauthenticated) {
-        return <Navigate to="/" />
-    }
+    // if (!authstate.isauthenticated) {
+    //     return <Navigate to="/" />
+    // }
 
     // const setTabData = () => {
     //     switch (activetab) {

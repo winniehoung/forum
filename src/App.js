@@ -9,6 +9,8 @@ import Register from './pages/Register';
 import { AuthProvider } from './contexts/AuthContext';
 import Profile from './pages/Profile';
 import Users from './pages/Users';
+import UserRoute from './utils/UserRoute';
+import AdminRoute from './utils/AdminRoute';
 
 function App() {
   return (
@@ -18,9 +20,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />}/>
-          <Route path='/users' element={<Users/>}/>
+          <Route path="/home" element={<UserRoute><Home /></UserRoute>} />
+          <Route path="/profile" element={<UserRoute><Profile /></UserRoute>}/>
+          <Route path='/users' element={<AdminRoute><Users/></AdminRoute>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
