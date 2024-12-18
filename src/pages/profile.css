@@ -44,7 +44,7 @@ hr{
 }
 .tab{
     background-color: var(--background-transparent);
-    padding: 0.5em 1em;
+    padding: 0.6em 1em;
     color: rgba(253,253,253, 0.9);
     /* color: white; */
     border-radius: 0.19em;
@@ -57,4 +57,11 @@ hr{
 }
 .historytab{
     margin-inline-start: auto;
+    background-color: var(--background-light);
+    color: var(--primary-color);
+
+
+}
+.historytab:hover{
+    color: rgba(97,218,251,0.85);
 }

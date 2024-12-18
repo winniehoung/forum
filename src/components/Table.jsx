@@ -85,7 +85,7 @@ function Table({ headers, initdata }) {
         const idx = e.target.dataset.idx;
         const searchdata = presearchdata.filter((row) => {
             return row.some((cell, colindex) => {
-                if (colindex === parseInt(idx, 10) + 1) {
+                if (colindex === parseInt(idx, 10) ) {
                     return cell.toString().toLowerCase().includes(keyword);
                 }
                 return false;
