@@ -4,7 +4,8 @@
 
 }
 .card{
-    margin-top: 100px;
+    margin-top: 105px;
+    /* padding: ; */
     background-color: #3a3f4b;
     padding: 1em 2em;
     border-radius: 0.5em;

@@ -10,7 +10,7 @@ function Message() {
 
     const { authstate } = useAuth();
     const [subject, setsubject] = useState('');
-    const [email, setemail] = useState(authstate.user.username);
+    const [email, setemail] = useState(authstate.user ? authstate.user.username : '');
     const [msg, setmsg] = useState('');
     const onSend = (e) => {
         e.preventDefault();
@@ -20,28 +20,32 @@ function Message() {
 
     }
     return (
-        <form onSubmit={onSend} className="contactuscard">
-            <h3>Contact Us</h3>
-            <div>
-                <label htmlFor="subject">Subject</label>
-                <input type="text" value={subject} onChange={(e) => setsubject(e.target.value)} required />
-            </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <input type="text" value={email} onChange={(e) => setemail(e.target.value)} required />
-            </div>
-            <div>
-                <label htmlFor="msg">Message</label>
-                <textarea value={msg} onChange={(e) => setmsg(e.target.value)} required />
-            </div>
-
-            <div className="button">
-                <button type="submit">Login</button>
-                <div className="links">
-                    {authstate.isauthenticated && <a href="#">Return Home</a>}
+        <div className="formcontainer">
+            <form onSubmit={onSend} className={`contactuscard ${!authstate.user?'topmargin':''}`}>
+                <h3>Contact Us</h3>
+                <div>
+                    <label htmlFor="subject">Subject</label>
+                    <input type="text" value={subject} onChange={(e) => setsubject(e.target.value)} required />
                 </div>
-            </div>
-        </form>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input type="text" value={email} onChange={(e) => setemail(e.target.value)} required />
+                </div>
+                <div>
+                    <label htmlFor="msg">Message</label>
+                    <textarea value={msg} onChange={(e) => setmsg(e.target.value)} required />
+                </div>
+
+                <div className="button">
+                    <button type="submit">Submit</button>
+                    <div className="links">
+                        {authstate.isauthenticated && <a href="#">Return Home</a>}
+                        {!authstate.isauthenticated && <a href="/">Back to Login</a>}
+                    </div>
+                </div>
+            </form>
+
+        </div>
 
 
     );

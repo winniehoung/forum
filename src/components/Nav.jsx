@@ -13,32 +13,19 @@ function Nav() {
     const onLogout=()=>{
         logout(navigate);
     }
-    const onHome=()=>{
-        setactivetab('Home');
-        navigate('/home');
-    }
-
-    const onPosts=()=>{
-        setactivetab('Posts');
-        navigate('/home');
-    }
-    const onUsers=()=>{
-        setactivetab('Users');
-        navigate('/users');
-    }
     const onTab=(tab,path)=>{
         setactivetab(tab);
         navigate(path);
     }
     return (
         <>
-            <h1 onClick={onHome} className="heading">ChatPad</h1>
+            <h1 onClick={()=>onTab('Home','/home')} className="heading">ChatPad</h1>
             <nav className="nav">
                 {
                     authstate.user.isadmin ? (
                         <>
-                            <a onClick={onPosts} className={activetab==='Posts'?'activetab':''}>Posts</a>
-                            <a onClick={onUsers} className={activetab==='Users'?'activetab':''}>Users</a>
+                            <a onClick={()=>onTab('Posts','/home')} className={activetab==='Posts'?'activetab':''}>Posts</a>
+                            <a onClick={()=>onTab('Users','/users')} className={activetab==='Users'?'activetab':''}>Users</a>
                             <a href="/messages">Messages</a>
 
                         </>
