@@ -25,25 +25,25 @@ function Home() {
 
     // admin tabs: for deleted posts
     const deleteddata=[
-        ['Easy Bread Pudding Recipe', 'win', '2024-12-15'],
-        ['Zwilling Chopsticks', 'win', '2024-12-33',],
-        ['Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
+        [1,'Easy Bread Pudding Recipe', 'win', '2024-12-15'],
+        [2,'Zwilling Chopsticks', 'win', '2024-12-33',],
+        [3,'Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
     ];
     // admin data and user data
-    const headers = ['Title', 'Author', 'Date'];
+    const headers = ['ID','Title', 'Author', 'Date'];
     const data = [
-        ['Easy Bread Pudding Recipe', 'win', '2024-12-15'],
-        ['Zwilling Chopsticks', 'win', '2024-12-33'],
-        ['Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
-        ['Holiday Treats', 'seabass', '2020-12-12'],
+        [1,'Easy Bread Pudding Recipe', 'win', '2024-12-15'],
+        [2,'Zwilling Chopsticks', 'win', '2024-12-33'],
+        [3,'Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
+        [4,'Holiday Treats', 'seabass', '2020-12-12'],
     ];
     // status: ban, unban
-    const adminheaders=['Title','Author','Date','Status'];
+    const adminheaders=['ID','Title','Author','Date','Status'];
     const admindata=[
-        ['Easy Bread Pudding Recipe', 'win', '2024-12-15','Active'],
-        ['Zwilling Chopsticks', 'win', '2024-12-33','Inactive'],
-        ['Staub Macaroon Dinnerware', 'seabass', '2000-12-12','Active'],
-        ['Holiday Treats', 'seabass', '2020-12-12','Inactive'],
+        [1,'Easy Bread Pudding Recipe', 'win', '2024-12-15','Active'],
+        [2,'Zwilling Chopsticks', 'win', '2024-12-33','Inactive'],
+        [3,'Staub Macaroon Dinnerware', 'seabass', '2000-12-12','Active'],
+        [4,'Holiday Treats', 'seabass', '2020-12-12','Inactive'],
     ];
 
     const tabs=['All', 'Deleted'];

@@ -17,7 +17,7 @@ function Profile() {
     const setTabData = () => {
         switch (activetab) {
             case 'Published':setactivetabdata(publisheddata);break;
-            case 'Drafts':setactivetabdata(publisheddata);break;
+            case 'Drafts':setactivetabdata(draftdata);break;
             default: setactivetabdata(publisheddata);break;
         }
     }
@@ -32,13 +32,19 @@ function Profile() {
 
 
     const tabs = ['Published', 'Drafts', 'Hidden', 'Archived','History'];
-    const publishedheaders = ['Title', 'Date', 'Status', '\u{1F4E6}'];
-    const draftheaders = ['Title', 'Date'];
+    const publishedheaders = ['ID','Title', 'Date', 'Status', '\u{1F4E6}'];
+    const draftheaders = ['ID','Title', 'Date'];
     const publisheddata = [
-        ['Easy Bread Pudding Recipe', '2024-12-15', 'Active', '\u{1F4E6}'],
-        ['Zwilling Chopsticks', '2024-12-33', 'Active', '\u{1F4E6}'],
-        ['Staub Macaroon Dinnerware', '2000-12-12', 'Inactive', '\u{1F4E6}'],
-        ['Holiday Treats', '2020-12-12', 'Inactive', '\u{1F4E6}'],
+        [1,'Easy Bread Pudding Recipe', '2024-12-15', 'Active', '\u{1F4E6}'],
+        [2,'Zwilling Chopsticks', '2024-12-33', 'Active', '\u{1F4E6}'],
+        [3,'Staub Macaroon Dinnerware', '2000-12-12', 'Inactive', '\u{1F4E6}'],
+        [4,'Holiday Treats', '2020-12-12', 'Inactive', '\u{1F4E6}'],
+    ];
+    const draftdata = [
+        [1,'Easy Bread Pudding Recipe', '2024-12-15'],
+        [2,'Zwilling Chopsticks', '2024-12-33'],
+        [3,'Staub Macaroon Dinnerware', '2000-12-12'],
+        [4,'Holiday Treats', '2020-12-12'],
     ];
 
     const getTabHeaders = () => {
