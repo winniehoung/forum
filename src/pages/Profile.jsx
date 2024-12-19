@@ -73,8 +73,8 @@ function Profile() {
                         <img src={logo} className="App-logo" alt="logo" id="profileimg"/>
 
                         <div className="userdetail">
-                            <h3>{authstate.user.email}</h3>
-                            <p>2024-12-12</p>
+                            <h3>{authstate.user.firstname} {authstate.user.lastname}</h3>
+                            <p>{authstate.user.createdat}</p>
                         </div>
                         <div></div>
                     </div>
