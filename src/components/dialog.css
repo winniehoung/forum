@@ -11,13 +11,15 @@
 
 .dialog{
     background: var(--background-light);
-    padding: 2.5em;
+    padding: 0;
+    margin: 0;
     border-radius: 1em;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     position: fixed;
     width: 98%;
     display: flex;
+    top: 105px;
     flex-direction: column;
     gap: 2em;
     overflow-y: auto;
@@ -29,7 +31,33 @@
 .dialog>*{
     margin: unset;
 }
+#dialogprofileimg{
+    max-height: 70px;
+}
+.dialogheader{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
+.dialogdescription{
+    display: flex;
+    gap: 2.5em;
+    justify-content: center;
+    color: lightgray;
+    font-size: small;
+}
+.dialogcontent-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.dialogcontent{
+    max-width: 60%;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
 .exit{
     all: unset;
     background-color: var(--background-light);
@@ -40,12 +68,19 @@
 .exit:hover{
     color: var(--secondary-color);
 }
-.userinfo{
+.dialoginfo{
     display: flex;
     justify-content: center;
     gap: 2em;
+    /* height: 2em; */
+    color: var(--primary-color);
+    font-size: small;
+    align-content: center;
+
 }
 .divide{
     width: 60%;
     align-self: center;
+    margin-top: 0;
+    padding-top: 0;
 }

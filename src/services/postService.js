@@ -2,6 +2,7 @@
 
 import axios from "axios";
 
+const URL='http://localhost:8082/posts';
 export const fetchPosts = async () => {
     try {
         const res = await axios.get('http://localhost:8082/posts');
@@ -25,11 +26,74 @@ export const fetchPosts = async () => {
         return { data, admindata ,deleteddata};
         // }
         // return { data: _data, admindata: _admindata };
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.log(err);
         return { data: _data, admindata: _admindata,deleteddata:_deleteddata };
     }
-}
+};
+// export const fetchPostDetails=async(postid)=>{
+//     try{
+//         const res=await axios.get(`${URL}/posts/${postid}`);
+//         console.log(res.data);
+//         const post=res.data.success?res.data.data:[];
+//         const postdetails={
+//             title:post.title,
+//             author:post.userId,
+//             createdat:new Date(post.metadata.createdAt).toLocaleDateString(),
+//             updatedat:new Date(post.metadata.updatedat).toLocaleDateString(),
+//             content:post.content,
+//             replies:[{userid:post.postReplies.userid,comment:post.postReplies.comment,
+//                 subreplies:[
+//                     {userid:post.postReplies.subReplies.userid,comment:post.postReplies.subReplies.comment},
+//                 ]
+//             }],
+//         }
+//         return postdetails;
+
+//     }catch(err){
+//         console.log(err);
+//         return null;
+//     }
+// };
+export const fetchPostDetails = async (postid) => {
+    try {
+        console.log("postid",postid);
+        const res = await axios.get(`${URL}/${postid}`);
+        console.log(res.data);
+
+        if (res.data.success) {
+            const post = res.data.data;
+
+            const postdetails = {
+                title: post.title,
+                author: post.userId,
+                createdat: new Date(post.metadata.createdAt).toLocaleDateString(),
+                updatedat: new Date(post.metadata.updatedAt).toLocaleDateString(),
+                views: post.metadata.views,
+                likes: post.metadata.likes,
+                totalreplies: post.metadata.totalReplies,
+                content: post.content,
+                replies: post.postReplies ? post.postReplies.map(reply => ({
+                    userId: reply.userid,
+                    comment: reply.comment,
+                    subReplies: reply.subReplies ? reply.subReplies.map(subReply => ({
+                        userId: subReply.userid,
+                        comment: subReply.comment
+                    })) : []
+                })) : []
+            };
+
+            return postdetails;
+        } else {
+            console.warn("Response was not successful:", res.data.message);
+            return null;
+        }
+
+    } catch (err) {
+        console.warn("error fetching post details:", err);
+        return null;
+    }
+};
 const _data = [
     [1, 'Easy Bread Pudding Recipe', 'win', '2024-12-15'],
     [2, 'Zwilling Chopsticks', 'win', '2024-12-33'],

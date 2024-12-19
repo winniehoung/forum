@@ -10,21 +10,29 @@ function Dialog({ isvisible, onClose, postdetails }) {
             <div className="dialog">
                 <button className="exit" onClick={onClose}>X</button>
 
-                <h2>{postdetails.title}</h2>
-                <h3>description</h3>
-                <hr></hr>
-                <div className='userinfo'>
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>author name</p>
-                    <p>publish date</p>
-                    <p>update date</p>
+                <div className='dialogheader'>
+                    <h2>{postdetails.title}</h2>
+                    <div className='dialogdescription'>
+                        <p>views: {postdetails.views}</p>
+                        <p>likes: {postdetails.likes}</p>
+                        <p>replies: {postdetails.totalreplies}</p>
+                    </div>
+                    <hr className='divide'></hr>
                 </div>
-                <hr className='divide'></hr>
-                <p>{postdetails.body}</p>
-                <hr className='divide'></hr>
-                <div className="replies">
-                    <p>replies and subreplies</p>
+
+                <div className='dialoginfo'>
+                    <img src={logo} className="App-logo" alt="logo" id='dialogprofileimg' />
+                    <p>Author: {postdetails.author}</p>
+                    <p>Created: {postdetails.createdat}</p>
+                    <p>Updated: {postdetails.updatedat}</p>
                 </div>
+                {/* <hr className='divide'></hr> */}
+                <div className='dialogcontent-wrapper'>
+                <p className='dialogcontent'>{postdetails.content}... Here is some additional filler text to make the user interface look better because currently the post is only one sentence and an actual post would be much longer than that. This is part of the nested flexbox dialogcontent-wrapper which is part of the nested flexbox dialog-body and part of the flexbox dialog. All properties are of border box so margins and paddings appear within the content area and it is easier to style the content on the page.</p>
+                </div>
+
+                <hr className='divide'></hr>
+
             </div>
         </>
     )

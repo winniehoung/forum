@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { useAuth } from "../contexts/AuthContext";
 import { useLocation } from "react-router-dom";
 import Dialog from "./Dialog";
+import { fetchPostDetails } from "../services/postService";
 
 function Table({ headers, initdata }) {
     const { authstate } = useAuth();
@@ -122,15 +123,20 @@ function Table({ headers, initdata }) {
     // }
 
     // display post details with dialog box
-    const onPost=(id)=>{
+    const onPost=async (id)=>{
         // api call
-        let postdetails={
-            title:id,
-            body:'to be determined',
-        };
-        setpost(postdetails);
-        console.log(postdetails);
-        setdialog(true);
+        try{
+            const postdetails=await fetchPostDetails(id);
+            setpost(postdetails);
+            setdialog(true);
+        }catch(err){
+            console.log(err);
+        }
+        // let postdetails={
+        //     title:id,
+        //     body:'to be determined',
+        // };
+
     };
 
     return (
