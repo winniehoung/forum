@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getMessages, updateMessage } from '../services/messageService';
 import UpdateMessage from '../components/UpdateMessage';
 import Select from 'react-select';
+import Nav from "../components/Nav";
 
 const MessageManagement = () => {
     const [messages, setMessages] = useState([]);
@@ -100,6 +101,7 @@ const MessageManagement = () => {
     };
 
     return (
+
         <div style={{
             margin: '10vh auto', // Center vertically and horizontally
             padding: '20px',
@@ -111,6 +113,7 @@ const MessageManagement = () => {
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
 
         }}>
+            <Nav />
             <h1 style={{ textAlign: 'center'}}>Message Management</h1>
 
             {!editingMessage && (

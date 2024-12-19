@@ -18,7 +18,7 @@ const UpdateMessage = ({ message, onSave, onCancel }) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minHeight: '70vh',
+            minHeight: '50vh',
         }}>
             <form
                 onSubmit={handleSubmit}
