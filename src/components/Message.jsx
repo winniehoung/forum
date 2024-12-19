@@ -16,7 +16,7 @@ function Message() {
         e.preventDefault();
         // api call - send message
 
-        navigate('/home');
+        //navigate('/home');
 
     }
     return (
