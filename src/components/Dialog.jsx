@@ -32,6 +32,24 @@ function Dialog({ isvisible, onClose, postdetails }) {
                 </div>
 
                 <hr className='divide'></hr>
+                <div>
+                    {postdetails.replies && postdetails.replies.length > 0 ? (
+                        <ul>
+                            {postdetails.replies.map((reply, idx) => (
+                                <li key={idx}>
+                                    <p>{reply.comment}</p>
+                                    <ul>
+                                        {reply.subreplies.map((subreply, subidx) => (
+                                            <li key={subidx}>{subreply.comment}</li>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>No replies yet...</p>
+                    )}
+                </div>
 
             </div>
         </>
