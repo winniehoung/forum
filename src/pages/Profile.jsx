@@ -69,7 +69,7 @@ function Profile() {
                     {activetabdata&&<Table headers={getTabHeaders()} initdata={activetabdata} isadmin={authstate.user.isadmin} />}
                 </div>
                 <div className="stats">
-                    <div className="userinfo">
+                    <div className="profile-userinfo">
                         <img src={logo} className="App-logo" alt="logo" />
 
                         <div className="userdetail">
