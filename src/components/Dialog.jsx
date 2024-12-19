@@ -38,11 +38,11 @@ function Dialog({ isvisible, onClose, postdetails }) {
                             {postdetails.replies.map((reply, idx) => (
                                 <li key={idx}>
                                     <p>{reply.comment}</p>
-                                    <ul>
+                                    {/* <ul>
                                         {reply.subreplies.map((subreply, subidx) => (
                                             <li key={subidx}>{subreply.comment}</li>
                                         ))}
-                                    </ul>
+                                    </ul> */}
                                 </li>
                             ))}
                         </ul>

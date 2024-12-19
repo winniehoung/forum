@@ -74,10 +74,10 @@ export const fetchPostDetails = async (postid) => {
                 totalreplies: post.metadata.totalReplies,
                 content: post.content,
                 replies: post.postReplies ? post.postReplies.map(reply => ({
-                    userId: reply.userid,
+                    userId: reply.userId,
                     comment: reply.comment,
                     subReplies: reply.subReplies ? reply.subReplies.map(subReply => ({
-                        userId: subReply.userid,
+                        userId: subReply.userId,
                         comment: subReply.comment
                     })) : []
                 })) : []
