@@ -15,11 +15,13 @@ function Home() {
     // retrieve data from service
     const [data,setdata]=useState([]);
     const [admindata,setadmindata]=useState([]);
+    const [deleteddata,setdeleteddata]=useState([]);
     useEffect(()=>{
         const getPosts=async()=>{
-            const {data,admindata}=await fetchPosts();
+            const {data,admindata,deleteddata}=await fetchPosts();
             setdata(data);
             setadmindata(admindata);
+            setdeleteddata(deleteddata);
         };
         getPosts();
     },[]);
@@ -35,30 +37,9 @@ function Home() {
         setTabData();
     }, [activetab]);
 
-
-    // admin tabs: for deleted posts
-    const deleteddata=[
-        [1,'Easy Bread Pudding Recipe', 'win', '2024-12-15'],
-        [2,'Zwilling Chopsticks', 'win', '2024-12-33',],
-        [3,'Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
-    ];
     // admin data and user data
     const headers = ['ID','Title', 'Author', 'Date'];
-    // const data = [
-    //     [1,'Easy Bread Pudding Recipe', 'win', '2024-12-15'],
-    //     [2,'Zwilling Chopsticks', 'win', '2024-12-33'],
-    //     [3,'Staub Macaroon Dinnerware', 'seabass', '2000-12-12'],
-    //     [4,'Holiday Treats', 'seabass', '2020-12-12'],
-    // ];
-    // status: ban, unban
     const adminheaders=['ID','Title','Author','Date','Status'];
-    // const admindata=[
-    //     [1,'Easy Bread Pudding Recipe', 'win', '2024-12-15','Active'],
-    //     [2,'Zwilling Chopsticks', 'win', '2024-12-33','Inactive'],
-    //     [3,'Staub Macaroon Dinnerware', 'seabass', '2000-12-12','Active'],
-    //     [4,'Holiday Treats', 'seabass', '2020-12-12','Inactive'],
-    // ];
-
     const tabs=['All', 'Deleted'];
     return (
         <div className="container">

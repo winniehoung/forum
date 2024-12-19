@@ -70,7 +70,7 @@ function Profile() {
                 </div>
                 <div className="stats">
                     <div className="profile-userinfo">
-                        <img src={logo} className="App-logo" alt="logo" />
+                        <img src={logo} className="App-logo" alt="logo" id="profileimg"/>
 
                         <div className="userdetail">
                             <h3>{authstate.user.username}</h3>

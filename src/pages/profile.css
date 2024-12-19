@@ -4,8 +4,9 @@
     margin-top: 2em;
     gap: 2em;
     justify-content: space-between;
+
 }
-.userinfo img{
+#profileimg{
     height: 70px;
 }
 .userdetail>*{
