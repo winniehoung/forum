@@ -11,6 +11,8 @@ function Register(){
     const [lastname,setlastname]=useState('');
     const [email,setemail]=useState('');
 
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
     const register = async (e) => {
         e.preventDefault();
