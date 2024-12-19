@@ -10,7 +10,7 @@ function Message() {
 
     const { authstate } = useAuth();
     const [subject, setsubject] = useState('');
-    const [email, setemail] = useState(authstate.user ? authstate.user.username : '');
+    const [email, setemail] = useState(authstate.user ? authstate.user.email : '');
     const [msg, setmsg] = useState('');
     const onSend = (e) => {
         e.preventDefault();

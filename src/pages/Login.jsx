@@ -9,7 +9,7 @@ function Login() {
     const navigate = useNavigate();
 
     const { login } = useAuth();
-    const [credentials, setcredentials] = useState({ username: '', password: '', });
+    const [credentials, setcredentials] = useState({ email: '', password: '', });
     const onLogin = (e) => {
         e.preventDefault();
         login(credentials);
@@ -21,8 +21,8 @@ function Login() {
             <form onSubmit={onLogin} className="card">
                 <h3>Login</h3>
                 <div>
-                    <label htmlFor="username">Username</label>
-                    <input type="text" value={credentials.username} onChange={(e)=>setcredentials({...credentials,username:e.target.value})} required />
+                    <label htmlFor="email">Email</label>
+                    <input type="text" value={credentials.email} onChange={(e)=>setcredentials({...credentials,email:e.target.value})} required />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>

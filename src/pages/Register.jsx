@@ -14,6 +14,7 @@ function Register(){
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+    // selyn
     const register = async (e) => {
         e.preventDefault();
         try {
