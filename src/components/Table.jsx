@@ -124,12 +124,12 @@ function Table({ headers, initdata }) {
     // display post details with dialog box
     const onPost=(id)=>{
         // api call
-        post={
+        let postdetails={
             title:id,
             body:'to be determined',
         };
-        console.log(post);
-        setpost(post);
+        setpost(postdetails);
+        console.log(postdetails);
         setdialog(true);
     };
 
@@ -178,7 +178,6 @@ function Table({ headers, initdata }) {
                                         );
                                     }
                                     if (colidx === 1 && location.pathname === '/home') {
-                                        console.log(cell);
                                         return <td key={colidx} className="postdetails" onClick={()=>onPost(row[0])}>{cell}</td>
                                     }
                                     return <td key={colidx} className={cell === 'Active' ? 'green' : cell === 'Inactive' ? 'red' : ''}>{cell}</td>
