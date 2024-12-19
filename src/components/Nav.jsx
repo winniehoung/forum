@@ -26,7 +26,7 @@ function Nav() {
                         <>
                             <a onClick={()=>onTab('Posts','/home')} className={activetab==='Posts'?'activetab':''}>Posts</a>
                             <a onClick={()=>onTab('Users','/users')} className={activetab==='Users'?'activetab':''}>Users</a>
-                            <a href="/messages">Messages</a>
+                            <a onClick={()=>onTab('Messages','/messages')}>Messages</a>
 
                         </>
                     ) : (
