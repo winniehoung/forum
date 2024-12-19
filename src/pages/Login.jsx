@@ -5,8 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 
 function Login() {
-    // const [username, setusername] = useState('');
-    // const [password, setpassword] = useState('');
+
     const navigate = useNavigate();
 
     const { login } = useAuth();
@@ -34,7 +33,7 @@ function Login() {
                     <div className="links">
                         <a href="#">Forgot Password?</a>
                         <a href="/register">Register</a>
-                        <a href="#">Contact Us</a>
+                        <a onClick={()=>navigate('/message')}>Contact Us</a>
                     </div>
                 </div>
             </form>

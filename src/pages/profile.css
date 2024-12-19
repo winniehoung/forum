@@ -1,0 +1,67 @@
+.userinfo{
+    display: flex;
+    align-content: center;
+    margin-top: 2em;
+    align-items: center;
+    align-content: space-evenly;
+    gap: 2em;
+}
+.userinfo img{
+    height: 70px;
+}
+.userdetail>*{
+    margin: 0;
+    padding: 0;
+}
+.userdetail>*+*{
+    margin-top: 0.5em;
+}
+hr{
+    border: none;
+    height: 1px;
+    border-top: 1px solid darkgray;
+    margin: 0 27px;
+    /* width: 27px;
+    padding: 0;
+    margin: 0; */
+}
+.topposts{
+    margin: 0;
+    padding-top: 0;
+    /* padding: 0; */
+}
+.topposts>p{
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-left: 8px;
+}
+.topposts>*{
+    margin: 0;
+}
+.tabs{
+    display: flex;
+    gap: 0.05em;
+}
+.tab{
+    background-color: var(--background-transparent);
+    padding: 0.6em 1em;
+    color: rgba(253,253,253, 0.9);
+    /* color: white; */
+    border-radius: 0.19em;
+    min-width: 100px;
+    text-align: center;
+}
+.activetab{
+    background-color: var(--background-light);
+    color: var(--primary-color);
+}
+/* .historytab{
+    margin-inline-start: auto; 
+     background-color: var(--background-light);
+    color: var(--primary-color); 
+
+
+}
+.historytab:hover{
+    color: rgba(97,218,251,0.85);
+} */

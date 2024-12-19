@@ -48,7 +48,7 @@ function Register(){
                 <div className="button">
                     <button type="submit">Login</button>
                     <div className="links">
-                        <a href="#">Contact Us</a>
+                        <a onClick={()=>navigate('/message')}>Contact Us</a>
                     </div>
                 </div>
             </form>

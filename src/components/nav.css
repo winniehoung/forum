@@ -1,0 +1,35 @@
+.heading:hover{
+    cursor: pointer;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background-light);
+    gap: 0.5em;
+    padding: 0.5em;
+    margin: 0 0.5em;
+    border-radius: 0.4em;
+}
+.heading{
+    margin: unset;
+    padding: 0.5em 0.5em;
+}
+
+.nav>a{
+    /* background-color: var(--background-light); */
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border-radius: 0.4em;
+
+}
+.nav>a:hover{
+    /* background-color: var(--secondary-color); */
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.navright{
+    margin-inline-start: auto;
+}
+.activetab{
+    color: var(--primary-color);
+}

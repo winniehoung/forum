@@ -4,27 +4,6 @@
     flex-direction: column;
     gap: 0.5em;
 }
-.container h1{
-    margin: unset;
-    padding: 0.5em 0.5em;
-}
-.nav{
-    display: flex;
-    flex-direction: row;
-    background-color: var(--background-light);
-    gap: 0.5em;
-    padding: 0.5em;
-    margin: 0 0.5em;
-    border-radius: 0.4em;
-}
-.nav>a{
-    background-color: var(--primary-color);
-    color: black;
-    padding: 0.5em 1em;
-    font-weight: bold;
-    border-radius: 0.4em;
-
-}
 
 .main{
     display: flex;
@@ -35,7 +14,7 @@
 .table{
     flex: 2;
     background-color: var(--background-light);
-    min-height: 300px;
+    min-height: 450px;
     border-radius: 0.4em;
 }
 .stats{
@@ -46,3 +25,4 @@
 .stats>*{
     padding: 1em;
 }
+/* profile */

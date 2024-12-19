@@ -11,13 +11,18 @@ export const AuthProvider=({children})=>{
 
     const login = (credentials) => {
         //api call
-        // e.preventDefault();
-        if (credentials.username === 'win' && credentials.password === 'letmein') {
+        if (credentials.username === 'seabass' && credentials.password === 'letmein') {
             setauthstate({
                 isauthenticated:true,
-                user:credentials,
+                user:{...credentials,isadmin:false,},
             });
-        } else {
+        } else if(credentials.username==='win'&&credentials.password==='letmein'){
+            setauthstate({
+                isauthenticated:true,
+                user:{...credentials,isadmin:true,},
+            });
+        }else
+        {
             alert('invalid credentials');
         }
     };
