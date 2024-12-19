@@ -5,8 +5,8 @@ import axios from "axios";
 const URL='http://localhost:8082/posts';
 export const fetchPosts = async () => {
     try {
-        const res = await axios.get('http://localhost:8082/posts');
-        const deletedres=await axios.get('http://localhost:8082/posts/accessibility/deleted');
+        const res = await axios.get(URL);
+        const deletedres=await axios.get(`${URL}/accessibility/deleted`);
         // if (res.data.success) {
         const posts = res.data.success?res.data.data:_data;
         const deletedposts=deletedres.data.success?deletedres.data.data:_deleteddata;
@@ -31,35 +31,10 @@ export const fetchPosts = async () => {
         return { data: _data, admindata: _admindata,deleteddata:_deleteddata };
     }
 };
-// export const fetchPostDetails=async(postid)=>{
-//     try{
-//         const res=await axios.get(`${URL}/posts/${postid}`);
-//         console.log(res.data);
-//         const post=res.data.success?res.data.data:[];
-//         const postdetails={
-//             title:post.title,
-//             author:post.userId,
-//             createdat:new Date(post.metadata.createdAt).toLocaleDateString(),
-//             updatedat:new Date(post.metadata.updatedat).toLocaleDateString(),
-//             content:post.content,
-//             replies:[{userid:post.postReplies.userid,comment:post.postReplies.comment,
-//                 subreplies:[
-//                     {userid:post.postReplies.subReplies.userid,comment:post.postReplies.subReplies.comment},
-//                 ]
-//             }],
-//         }
-//         return postdetails;
 
-//     }catch(err){
-//         console.log(err);
-//         return null;
-//     }
-// };
 export const fetchPostDetails = async (postid) => {
     try {
-        console.log("postid",postid);
         const res = await axios.get(`${URL}/${postid}`);
-        console.log(res.data);
 
         if (res.data.success) {
             const post = res.data.data;
