@@ -14,7 +14,7 @@ export const fetchPosts = async () => {
             ]);
             // id, title, author, date, status
             const admindata = posts.map((post) => [
-                post.postId, post.title, post.userId, new Date(post.metadata.createdAt).toLocaleDateString(), post.status.accessibility === 'PUBLISHED' ? 'Active' : 'Inactive',
+                post.postId, post.title, post.userId, new Date(post.metadata.createdAt).toLocaleDateString(), post.accessibility === 'PUBLISHED' ? 'Active' : 'Inactive',
             ]);
             return { data, admindata };
         }
