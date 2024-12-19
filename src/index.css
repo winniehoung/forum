@@ -1,14 +1,18 @@
-:root{
+:root {
   --primary-color: #61dafb;
-  --secondary-color: rgba(97,218,251,0.95);
+  --secondary-color: rgba(97, 218, 251, 0.95);
   --tertiary-color: #45b8d0;
   --background-light: #3a3f4b;
   --background-color: #282c32;
-  --background-transparent:rgba(40,44,50,0.85);
+  --background-transparent: rgba(40, 44, 50, 0.85);
+  --background-supertransparent: rgba(40, 44, 50, 0.5);
+
 }
-*{
+
+* {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,12 +30,12 @@ code {
     monospace;
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
 }
 
-button{
+button {
   background-color: var(--primary-color);
   color: black;
   padding: 0.5em 1em;
@@ -39,9 +43,11 @@ button{
   border-radius: 0.4em;
   font-size: small;
 }
-button:hover{
+
+button:hover {
   background-color: var(--secondary-color);
 }
-.accent{
+
+.accent {
   color: var(--primary-color);
 }

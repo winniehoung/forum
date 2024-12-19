@@ -24,7 +24,10 @@
     background-color: var(--secondary-color);
 }
 
-.buttons .addpost {
+.buttons #addpost {
+    background-color: var(--background-light);
+    outline: none;
+    border: none;
     margin-inline-start: auto;
     margin-top: 1em;
     margin-right: 1em;
@@ -32,7 +35,7 @@
     font-weight: bold;
     font-size: x-large;
 }
-buttons .addpost:hover{
+buttons #addpost:hover{
     color: gold;
 }
 
@@ -78,4 +81,8 @@ td {
 } */
 .red {
     color: red;
+}
+.postdetails:hover{
+
+    background-color: var(--background-supertransparent);
 }

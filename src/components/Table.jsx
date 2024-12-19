@@ -4,7 +4,7 @@ import './table.css';
 import PropTypes from "prop-types";
 import { useAuth } from "../contexts/AuthContext";
 import { useLocation } from "react-router-dom";
-import Suggest from "./Suggest";
+import Dialog from "./Dialog";
 
 function Table({ headers, initdata }) {
     const { authstate } = useAuth();
@@ -12,14 +12,19 @@ function Table({ headers, initdata }) {
     const location = useLocation();
 
     const [data, setdata] = useState([]);
+    // for sorting, editing data
     const [sort, setsort] = useState({ col: null, desc: false });
     const [edit, setedit] = useState(null);
     // for filtering data
     const [search, setsearch] = useState(false);
     const [presearchdata, setpresearchdata] = useState(null);
+    // for post detail dialog box
+    const [dialog,setdialog]=useState(false);
+    const [post,setpost]=useState([]);
+
 
     useEffect(() => {
-        // concat a record id for keyword searching
+        // concat a record id for keyword searching in absense of a pk
         setdata(clone(initdata).map((row, idx) => row.concat(idx)));
     }, [initdata]);
     // sort table by click
@@ -115,13 +120,26 @@ function Table({ headers, initdata }) {
     //         setdata(dataclone);
     //     }
     // }
+
+    // display post details with dialog box
+    const onPost=(id)=>{
+        // api call
+        post={
+            title:id,
+            body:'to be determined',
+        };
+        console.log(post);
+        setpost(post);
+        setdialog(true);
+    };
+
     return (
         <div className="tile">
             <div className="buttons">
                 <p className="button" onClick={toggleSearch}>
                     {search ? 'Hide Search' : 'Show Search'}
                 </p>
-                {!authstate.user.isadmin&&location.pathname==='/home'&&<p className="addpost">+</p>}
+                {!authstate.user.isadmin&&location.pathname==='/home'&&<p id="addpost">+</p>}
 
             </div>
 
@@ -150,7 +168,7 @@ function Table({ headers, initdata }) {
                                     if (colidx === 0 || colidx === headers.length) return;
 
                                     if (edit && edit.row === rowidx && edit.col === colidx) {
-                                        const statusoptions=['Active','Inactive'];
+                                        // const statusoptions=['Active','Inactive'];
                                         cell = (
                                             <form onSubmit={onSaveEdit}>
                                                 <input type="text" defaultValue={cell} list={`${rowidx}-${colidx}`}/>
@@ -159,8 +177,9 @@ function Table({ headers, initdata }) {
                                             </form>
                                         );
                                     }
-                                    if (colidx === 0 && location.pathname === '/home') {
-                                        return <td key={colidx} className="postdetails" >{cell}</td>
+                                    if (colidx === 1 && location.pathname === '/home') {
+                                        console.log(cell);
+                                        return <td key={colidx} className="postdetails" onClick={()=>onPost(row[0])}>{cell}</td>
                                     }
                                     return <td key={colidx} className={cell === 'Active' ? 'green' : cell === 'Inactive' ? 'red' : ''}>{cell}</td>
                                 })}
@@ -169,6 +188,7 @@ function Table({ headers, initdata }) {
                     })}
                 </tbody>
             </table>
+            <Dialog isvisible={dialog} onClose={()=>setdialog(false)} postdetails={post}/>
         </div>
     );
 }

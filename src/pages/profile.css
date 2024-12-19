@@ -55,13 +55,13 @@ hr{
     background-color: var(--background-light);
     color: var(--primary-color);
 }
-.historytab{
-    margin-inline-start: auto;
-    background-color: var(--background-light);
-    color: var(--primary-color);
+/* .historytab{
+    margin-inline-start: auto; 
+     background-color: var(--background-light);
+    color: var(--primary-color); 
 
 
 }
 .historytab:hover{
     color: rgba(97,218,251,0.85);
-}
+} */
