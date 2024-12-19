@@ -76,6 +76,7 @@ function Profile() {
                             <h3>{authstate.user.username}</h3>
                             <p>2024-12-12</p>
                         </div>
+                        <div></div>
                     </div>
                     <hr></hr>
                     <div className="topposts">
