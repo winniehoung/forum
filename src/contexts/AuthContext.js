@@ -11,6 +11,8 @@ export const AuthProvider=({children})=>{
 
     const login = (credentials) => {
         //api call
+
+        
         if (credentials.username === 'seabass' && credentials.password === 'letmein') {
             setauthstate({
                 isauthenticated:true,
