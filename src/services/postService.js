@@ -1,6 +1,7 @@
 //api calls for managing posts
 
 import axios from "axios";
+import { capitalize } from "../utils/helpers";
 
 const URL='http://localhost:8082/posts';
 export const fetchPosts = async () => {
@@ -16,8 +17,8 @@ export const fetchPosts = async () => {
             post.postId, post.title, post.userId, new Date(post.metadata.createdAt).toLocaleDateString(),
         ]);
         // id, title, author, date, status
-        const admindata = posts.map((post) => [
-            post.postId, post.title, post.userId, new Date(post.metadata.createdAt).toLocaleDateString(), post.accessibility === 'PUBLISHED' ? 'Active' : 'Inactive',
+        const admindata = posts.filter((post)=>post.accessibility!=='UNPUBLISHED'&&post.accessibility!=='HIDDEN').map((post) => [
+            post.postId, post.title, post.userId, new Date(post.metadata.createdAt).toLocaleDateString(), capitalize(post.accessibility) ,
         ]);
         // id,title,author,date
         const deleteddata = deletedposts.map((post) => [
@@ -67,6 +68,13 @@ export const fetchPostDetails = async (postid) => {
     } catch (err) {
         console.warn("error fetching post details:", err);
         return null;
+    }
+};
+export const updatePost=async(postid,post)=>{
+    try{
+        const res=await axios.put(`${URL}/${postid}`,post);
+    }catch(err){
+        alert('could not update post at this time...');
     }
 };
 const _data = [

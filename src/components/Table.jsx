@@ -54,6 +54,12 @@ function Table({ headers, initdata }) {
     const onSaveEdit = (e) => {
         e.preventDefault();
         const input = e.target.firstChild;
+        
+        // api put call 
+        const postid=data[edit.row][0];
+        const posttitle=data[edit.row][1];
+        const updatedata={}
+
         const dataclone = clone(data).map((row) => {
             if (row[row.length - 1] === edit.row) {
                 row[edit.col] = input.value;
@@ -111,16 +117,6 @@ function Table({ headers, initdata }) {
             })}
         </tr>
     );
-    // toggle status not registering on dom
-    // const onToggle = (e) => {
-    //     if (e.target.tagname==='TD'&&e.target.cellIndex === headers.length) {
-    //         console.log('toggle');
-    //         const rowidx = parseInt(e.target.parentNode.dataset.row, 10);
-    //         const dataclone = clone(data);
-    //         dataclone[rowidx][headers.length - 1] = dataclone[rowidx][headers.length - 1] === 'Active' ? 'Inactive' : 'Active';
-    //         setdata(dataclone);
-    //     }
-    // }
 
     // display post details with dialog box
     const onPost=async (id)=>{
@@ -132,10 +128,6 @@ function Table({ headers, initdata }) {
         }catch(err){
             console.log(err);
         }
-        // let postdetails={
-        //     title:id,
-        //     body:'to be determined',
-        // };
 
     };
 
@@ -174,11 +166,10 @@ function Table({ headers, initdata }) {
                                     if (colidx === 0 || colidx === headers.length) return;
 
                                     if (edit && edit.row === rowidx && edit.col === colidx) {
-                                        // const statusoptions=['Active','Inactive'];
                                         cell = (
                                             <form onSubmit={onSaveEdit}>
                                                 <input type="text" defaultValue={cell} list={`${rowidx}-${colidx}`}/>
-                                                {/* <Suggest id={`${rowidx}-${colidx}`} defaultvalue={cell} options={statusoptions}/> */}
+                          
                                                 
                                             </form>
                                         );
@@ -186,7 +177,7 @@ function Table({ headers, initdata }) {
                                     if (colidx === 1 && location.pathname === '/home') {
                                         return <td key={colidx} className="postdetails" onClick={()=>onPost(row[0])}>{cell}</td>
                                     }
-                                    return <td key={colidx} className={cell === 'Active' ? 'green' : cell === 'Inactive' ? 'red' : ''}>{cell}</td>
+                                    return <td key={colidx} className={cell === 'Published' ? 'green' : cell === 'Deleted' ? 'red' : ''}>{cell}</td>
                                 })}
                             </tr>
                         );
@@ -198,8 +189,8 @@ function Table({ headers, initdata }) {
     );
 }
 
-Table.propTypes = {
-    headers: PropTypes.arrayOf(PropTypes.string),
-    initdata: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
-}
+// Table.propTypes = {
+//     headers: PropTypes.arrayOf(PropTypes.string),
+//     initdata: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+// }
 export default Table;
